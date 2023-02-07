@@ -14,6 +14,7 @@
 		5865BCC329929664001C10C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5865BCC129929664001C10C5 /* Main.storyboard */; };
 		5865BCC529929667001C10C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5865BCC429929667001C10C5 /* Assets.xcassets */; };
 		5865BCC829929667001C10C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5865BCC629929667001C10C5 /* LaunchScreen.storyboard */; };
+		5865BCD129929ADC001C10C5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865BCD029929ADC001C10C5 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		5865BCC429929667001C10C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5865BCC729929667001C10C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5865BCC929929667001C10C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5865BCD029929ADC001C10C5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B5EF0F80DFAF6B6906894602 /* Pods_GoogleImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8A587E2F358592ECA719AB /* Pods-GoogleImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleImage.release.xcconfig"; path = "Target Support Files/Pods-GoogleImage/Pods-GoogleImage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 		5865BCBA29929664001C10C5 /* GoogleImage */ = {
 			isa = PBXGroup;
 			children = (
+				5865BCCF29929AC7001C10C5 /* Model */,
 				5865BCBB29929664001C10C5 /* AppDelegate.swift */,
 				5865BCBD29929664001C10C5 /* SceneDelegate.swift */,
 				5865BCBF29929664001C10C5 /* ViewController.swift */,
@@ -72,6 +75,14 @@
 				5865BCC929929667001C10C5 /* Info.plist */,
 			);
 			path = GoogleImage;
+			sourceTree = "<group>";
+		};
+		5865BCCF29929AC7001C10C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5865BCD029929ADC001C10C5 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		94CF0EA0F91BC0E68527546C /* Frameworks */ = {
@@ -88,7 +99,6 @@
 				05BAA150DC37AF704EB84663 /* Pods-GoogleImage.debug.xcconfig */,
 				BB8A587E2F358592ECA719AB /* Pods-GoogleImage.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -210,6 +220,7 @@
 				5865BCC029929664001C10C5 /* ViewController.swift in Sources */,
 				5865BCBC29929664001C10C5 /* AppDelegate.swift in Sources */,
 				5865BCBE29929664001C10C5 /* SceneDelegate.swift in Sources */,
+				5865BCD129929ADC001C10C5 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
