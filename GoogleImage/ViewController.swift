@@ -11,8 +11,13 @@ class ViewController: UIViewController {
 
     var images_results: [Result] = []
     
+    @IBOutlet weak var collectionImages: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionImages.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
+        self.collectionImages.dataSource = self
+        self.collectionImages.delegate = self
         request()
         
     }
@@ -42,8 +47,20 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
-
-
 }
 
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images_results.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+        
+        return cell
+        
+    }
+    
+    
+}
 
