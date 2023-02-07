@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		518F666D83D6AC237D4F3EB4 /* Pods_GoogleImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EF0F80DFAF6B6906894602 /* Pods_GoogleImage.framework */; };
 		5865BCBC29929664001C10C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865BCBB29929664001C10C5 /* AppDelegate.swift */; };
 		5865BCBE29929664001C10C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865BCBD29929664001C10C5 /* SceneDelegate.swift */; };
 		5865BCC029929664001C10C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865BCBF29929664001C10C5 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05BAA150DC37AF704EB84663 /* Pods-GoogleImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleImage.debug.xcconfig"; path = "Target Support Files/Pods-GoogleImage/Pods-GoogleImage.debug.xcconfig"; sourceTree = "<group>"; };
 		5865BCB829929664001C10C5 /* GoogleImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5865BCBB29929664001C10C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5865BCBD29929664001C10C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		5865BCC429929667001C10C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5865BCC729929667001C10C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5865BCC929929667001C10C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5EF0F80DFAF6B6906894602 /* Pods_GoogleImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB8A587E2F358592ECA719AB /* Pods-GoogleImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleImage.release.xcconfig"; path = "Target Support Files/Pods-GoogleImage/Pods-GoogleImage.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518F666D83D6AC237D4F3EB4 /* Pods_GoogleImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				5865BCBA29929664001C10C5 /* GoogleImage */,
 				5865BCB929929664001C10C5 /* Products */,
+				E5B215634BCD932E123995E4 /* Pods */,
+				94CF0EA0F91BC0E68527546C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = GoogleImage;
 			sourceTree = "<group>";
 		};
+		94CF0EA0F91BC0E68527546C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF0F80DFAF6B6906894602 /* Pods_GoogleImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5B215634BCD932E123995E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05BAA150DC37AF704EB84663 /* Pods-GoogleImage.debug.xcconfig */,
+				BB8A587E2F358592ECA719AB /* Pods-GoogleImage.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5865BCCC29929667001C10C5 /* Build configuration list for PBXNativeTarget "GoogleImage" */;
 			buildPhases = (
+				CF12FADAB39EE40D00716A75 /* [CP] Check Pods Manifest.lock */,
 				5865BCB429929664001C10C5 /* Sources */,
 				5865BCB529929664001C10C5 /* Frameworks */,
 				5865BCB629929664001C10C5 /* Resources */,
+				D8003C19B3D353E2B1D42B27 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF12FADAB39EE40D00716A75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoogleImage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8003C19B3D353E2B1D42B27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoogleImage/Pods-GoogleImage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoogleImage/Pods-GoogleImage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoogleImage/Pods-GoogleImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5865BCB429929664001C10C5 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		5865BCCD29929667001C10C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05BAA150DC37AF704EB84663 /* Pods-GoogleImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -309,6 +379,7 @@
 		};
 		5865BCCE29929667001C10C5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB8A587E2F358592ECA719AB /* Pods-GoogleImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

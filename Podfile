@@ -7,4 +7,6 @@ target 'GoogleImage' do
 
   # Pods for GoogleImage
 
+	pod 'Kingfisher'
+
 end
