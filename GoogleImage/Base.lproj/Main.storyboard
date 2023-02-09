@@ -61,11 +61,22 @@
                     <connections>
                         <outlet property="collectionImages" destination="dBt-vc-mam" id="ySN-V1-qjK"/>
                         <outlet property="searcher" destination="yNA-jS-gay" id="l9w-rj-XDu"/>
+                        <segue destination="8xt-TQ-djE" kind="show" identifier="toContent" id="eli-6g-qxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="970.76923076923072" y="-28.436018957345969"/>
+        </scene>
+        <!--PageStoryboard-->
+        <scene sceneID="338-ZD-9Rc">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PageViewController" storyboardName="PageStoryboard" id="8xt-TQ-djE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Z2J-a9-TAw"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q2B-Ul-ZCY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1695" y="24"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bH5-9n-iiH">

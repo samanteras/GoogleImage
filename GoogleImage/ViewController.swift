@@ -78,5 +78,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let page = storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! PageViewController
+        page.resultData = results[indexPath.row]
+        self.collectionImages.reloadData()
+        self.navigationController?.pushViewController(page, animated: true)
+    }
+    
 }
 
