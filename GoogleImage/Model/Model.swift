@@ -13,6 +13,7 @@ struct APIResponse: Decodable{
     var images_results: [Result]
 }
 
+
 struct Result: Codable{
     var thumbnail: String
     var link: String

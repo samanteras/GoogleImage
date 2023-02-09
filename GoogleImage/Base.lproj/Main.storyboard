@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dBt-vc-mam">
-                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
+                                <rect key="frame" x="0.0" y="147" width="390" height="663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hWX-ex-nfo">
                                     <size key="itemSize" width="128" height="128"/>
@@ -37,19 +37,30 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yNA-jS-gay">
+                                <rect key="frame" x="0.0" y="91" width="390" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1wi-CY-4yn"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dBt-vc-mam" secondAttribute="trailing" id="M3T-3h-Dn7"/>
-                            <constraint firstItem="dBt-vc-mam" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZMG-gk-2aV"/>
+                            <constraint firstItem="dBt-vc-mam" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6in-3n-dJ3"/>
+                            <constraint firstItem="yNA-jS-gay" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AJC-ae-UK3"/>
+                            <constraint firstItem="yNA-jS-gay" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TM9-rh-QTE"/>
+                            <constraint firstItem="dBt-vc-mam" firstAttribute="top" secondItem="yNA-jS-gay" secondAttribute="bottom" id="VV3-r5-uaa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dBt-vc-mam" secondAttribute="bottom" id="cYy-Oc-zra"/>
                             <constraint firstItem="dBt-vc-mam" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fYT-IG-nWt"/>
+                            <constraint firstItem="yNA-jS-gay" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="t2n-Wc-rTV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Поиск" style="browser" id="wiL-wI-y1L"/>
                     <connections>
                         <outlet property="collectionImages" destination="dBt-vc-mam" id="ySN-V1-qjK"/>
+                        <outlet property="searcher" destination="yNA-jS-gay" id="l9w-rj-XDu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

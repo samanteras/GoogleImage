@@ -31,6 +31,9 @@
                 <constraint firstAttribute="bottom" secondItem="4vt-Lr-84B" secondAttribute="bottom" id="dKg-zN-aXU"/>
             </constraints>
             <size key="customSize" width="265" height="180"/>
+            <connections>
+                <outlet property="googleImage" destination="4vt-Lr-84B" id="ISo-ft-eES"/>
+            </connections>
             <point key="canvasLocation" x="296.15384615384613" y="34.123222748815166"/>
         </collectionViewCell>
     </objects>

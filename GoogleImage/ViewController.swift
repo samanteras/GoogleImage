@@ -7,10 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
 
-    var images_results: [Result] = []
+    var results: [Result] = []
     
+    @IBOutlet weak var searcher: UISearchBar!
     @IBOutlet weak var collectionImages: UICollectionView!
     
     override func viewDidLoad() {
@@ -18,18 +19,33 @@ class ViewController: UIViewController {
         self.collectionImages.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
         self.collectionImages.dataSource = self
         self.collectionImages.delegate = self
-        request()
         
     }
     
-    func request(){
-        guard let url = URL(string: "https://serpapi.com/search.json?q=Apple&tbm=isch&ijn=0") else {
+    func urlEncode(string: String) -> String {
+      let allowedCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-._~"))
+      return string.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searcher.resignFirstResponder()
+        if let text = searcher.text {
+            let correctText = urlEncode(string: text)
+            results = []
+            collectionImages?.reloadData()
+            request(query: correctText)
+        }
+    }
+    
+    func request(query: String){
+        let urlString = "https://serpapi.com/search.json?q=\(query)&tbm=isch&ijn=0&api_key=32fa08bae875f81fc73f39f36166330a256838d92051819dda4bfa11fb861620"
+        guard let url = URL(string: urlString) else {
             return
         }
      //   guard let self = self else { return }
 
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                
             guard let data = data, error == nil  else {
                 return
             }
@@ -37,7 +53,8 @@ class ViewController: UIViewController {
             do {
                 let jsonResult = try JSONDecoder().decode(APIResponse.self, from: data)
                 DispatchQueue.main.async {
-                    self.images_results = jsonResult.images_results
+                    self?.results = jsonResult.images_results
+                    self?.collectionImages.reloadData()
                 }
                 print(jsonResult.images_results.count)
             }
@@ -51,16 +68,15 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images_results.count
+        return results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-        
+        let imageURLString = results[indexPath.row].thumbnail
+        cell.configure(with: imageURLString)
         return cell
         
     }
-    
-    
 }
 
