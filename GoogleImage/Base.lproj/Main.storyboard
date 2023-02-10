@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pnz-nm-kqE">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pnz-nm-kqE" customClass="ImageCell" customModule="GoogleImage" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7n6-Ch-e8n">
@@ -62,16 +62,17 @@
                         <outlet property="collectionImages" destination="dBt-vc-mam" id="ySN-V1-qjK"/>
                         <outlet property="searcher" destination="yNA-jS-gay" id="l9w-rj-XDu"/>
                         <segue destination="8xt-TQ-djE" kind="show" identifier="toContent" id="eli-6g-qxC"/>
+                        <segue destination="0fm-52-nnf" kind="show" id="RGV-p9-tsz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="970.76923076923072" y="-28.436018957345969"/>
         </scene>
-        <!--PageStoryboard-->
+        <!--SingleImageStoryboard-->
         <scene sceneID="338-ZD-9Rc">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="PageViewController" storyboardName="PageStoryboard" id="8xt-TQ-djE" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="SingleImageStoryboard" storyboardName="SingleImageStoryboard" id="8xt-TQ-djE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Z2J-a9-TAw"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2B-Ul-ZCY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -95,6 +96,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lt6-JQ-z6B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="41.53846153846154" y="-28.436018957345969"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="oW6-BU-Pk9">
+            <objects>
+                <viewControllerPlaceholder id="rLh-QO-RQe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kx2-7F-r20" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="488" y="-63"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="uvZ-zJ-Toe">
+            <objects>
+                <pageViewController storyboardIdentifier="PageStoryboard" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="0fm-52-nnf" customClass="PageViewController" customModule="GoogleImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="s6k-sY-JyH"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UbT-pW-AS3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="971" y="653"/>
         </scene>
     </scenes>
     <resources>

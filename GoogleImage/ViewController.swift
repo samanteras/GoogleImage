@@ -8,14 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
-
-    var results: [Result] = []
     
+    let correctText = ""
+    var index: Int = 0
+   
+    
+
     @IBOutlet weak var searcher: UISearchBar!
     @IBOutlet weak var collectionImages: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("index View: \(indexForImage.indexMain)")
         self.collectionImages.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
         self.collectionImages.dataSource = self
         self.collectionImages.delegate = self
@@ -23,8 +27,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
     
     func urlEncode(string: String) -> String {
-      let allowedCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-._~"))
-      return string.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
+        let allowedCharacterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-._~"))
+        return string.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)!
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -33,36 +37,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
             let correctText = urlEncode(string: text)
             results = []
             collectionImages?.reloadData()
-            request(query: correctText)
-        }
-    }
-    
-    func request(query: String){
-        let urlString = "https://serpapi.com/search.json?q=\(query)&tbm=isch&ijn=0&api_key=32fa08bae875f81fc73f39f36166330a256838d92051819dda4bfa11fb861620"
-        guard let url = URL(string: urlString) else {
-            return
-        }
-     //   guard let self = self else { return }
-
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-                
-            guard let data = data, error == nil  else {
-                return
-            }
-            
-            do {
-                let jsonResult = try JSONDecoder().decode(APIResponse.self, from: data)
-                DispatchQueue.main.async {
-                    self?.results = jsonResult.images_results
-                    self?.collectionImages.reloadData()
-                }
-                print(jsonResult.images_results.count)
-            }
-            catch {
-                print(error)
+            request(query: correctText) {
+                self.collectionImages.reloadData()
             }
         }
-        task.resume()
     }
 }
 
@@ -74,14 +52,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
         let imageURLString = results[indexPath.row].thumbnail
+        
         cell.configure(with: imageURLString)
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let page = storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! PageViewController
-        page.resultData = results[indexPath.row]
+        let page = storyboard?.instantiateViewController(withIdentifier: "PageStoryboard") as! PageViewController
+        let single = storyboard?.instantiateViewController(withIdentifier: "SingleImageStoryboard") as! SingleImageViewController
+        indexForImage.indexMain = indexPath.row
+        single.resultData = results[indexPath.row]
+        single.indexSingle = indexPath.row
+        print("index View: \(indexForImage.indexMain)")
+        single.correctText = correctText
         self.collectionImages.reloadData()
         self.navigationController?.pushViewController(page, animated: true)
     }

@@ -6,52 +6,69 @@
 //
 
 import UIKit
-import SafariServices
-import Kingfisher
 
-class PageViewController: UIViewController {
-
-    @IBOutlet weak var searchImage: UIImageView!
-    @IBOutlet weak var pushBrowser: UIButton!
-    var resultData: Result!
-    var urlImage: String?
+class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
+    
+    var indexMain = indexForImage.indexMain
+    var correctText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getImage(url: resultData.thumbnail, imageView: searchImage)
-        if URL(string: resultData.link) == nil {
-            pushBrowser.isHidden = true
+        print("index Page 1: \(indexForImage.indexMain)")
+        
+        if let vc = self.pageViewController(for: indexForImage.indexMain) {
+            self.setViewControllers([vc], direction: .forward, animated: false)
         }
+    //request(query: correctText){
+//        DispatchQueue.main.async {
+            
+       // }
+        
+        self.dataSource = self
+
     }
     
-    @IBAction func pushToOpenInBrowser(_ sender: Any) {
-        if let url = URL(string: resultData.link) {
-            let svc = SFSafariViewController(url:url)
-            present(svc, animated: true)
-        }
-    }
-    
-    func getImage(url: String, imageView: UIImageView){
-        if let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let data = try? Data(contentsOf: url) {
-                    let image = UIImage(data: data)
-                    if image!.size.height > 100 && image!.size.width > 100 {
-                        DispatchQueue.main.async {
-                            imageView.kf.setImage(with: url)
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            imageView.image = UIImage(named: "content")
-                        }
-                    }
-                }
-            }.resume()
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        print("index Page 2: \(indexForImage.indexMain)")
+        indexForImage.indexMain -= 1
+        if indexForImage.indexMain < 0 {
+            indexForImage.indexMain += 1
+            return nil
         } else {
-            DispatchQueue.main.async {
-                imageView.image = UIImage(named: "content")
-            }
+            return self.pageViewController(for: indexForImage.indexMain)
+
         }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        print("index Page 3: \(indexForImage.indexMain)")
+        indexForImage.indexMain +=  1
+        if indexForImage.indexMain >= results.count {
+            indexForImage.indexMain -= 1
+            return nil
+        } else {
+                return self.pageViewController(for: indexForImage.indexMain)
+            }
+    }
+    
+    func pageViewController(for index: Int) -> SingleImageViewController? {
+        if index < 0 {
+            return nil
+        }
+        
+        if index >= results.count {
+            return nil
+        }
+        
+        let single = storyboard?.instantiateViewController(withIdentifier: "SingleImageStoryboard") as! SingleImageViewController
+        print("index Page 4: \(indexForImage.indexMain)")
+
+        single.resultData = results[index]
+        single.correctText = correctText
+        
+      
+        
+        return single
     }
 
 }
