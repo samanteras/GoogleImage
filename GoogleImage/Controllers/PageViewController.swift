@@ -14,22 +14,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("index Page 1: \(indexForImage.indexMain)")
         
         if let vc = self.pageViewController(for: indexForImage.indexMain) {
             self.setViewControllers([vc], direction: .forward, animated: false)
         }
-    //request(query: correctText){
-//        DispatchQueue.main.async {
-            
-       // }
-        
-        self.dataSource = self
 
+        self.dataSource = self
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print("index Page 2: \(indexForImage.indexMain)")
         indexForImage.indexMain -= 1
         if indexForImage.indexMain < 0 {
             indexForImage.indexMain += 1
@@ -41,7 +34,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        print("index Page 3: \(indexForImage.indexMain)")
         indexForImage.indexMain +=  1
         if indexForImage.indexMain >= results.count {
             indexForImage.indexMain -= 1
@@ -61,13 +53,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource {
         }
         
         let single = storyboard?.instantiateViewController(withIdentifier: "SingleImageStoryboard") as! SingleImageViewController
-        print("index Page 4: \(indexForImage.indexMain)")
 
         single.resultData = results[index]
         single.correctText = correctText
-        
-      
-        
+    
         return single
     }
 

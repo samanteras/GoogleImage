@@ -10,9 +10,9 @@ import UIKit
 class ViewController: UIViewController, UISearchBarDelegate {
     
     let correctText = ""
-    var index: Int = 0
    
-    
+    let countCells = 2
+    let offset: CGFloat = 2.0
 
     @IBOutlet weak var searcher: UISearchBar!
     @IBOutlet weak var collectionImages: UICollectionView!
@@ -23,7 +23,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
         self.collectionImages.register(UINib(nibName: "ImageCell", bundle: nil), forCellWithReuseIdentifier: "ImageCell")
         self.collectionImages.dataSource = self
         self.collectionImages.delegate = self
-        
     }
     
     func urlEncode(string: String) -> String {
@@ -44,7 +43,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return results.count
     }
@@ -68,6 +67,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         single.correctText = correctText
         self.collectionImages.reloadData()
         self.navigationController?.pushViewController(page, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let frameCV = collectionImages.frame
+        
+        let widthCell = frameCV.width / CGFloat(countCells)
+        let heightCell = widthCell
+        
+        let spacing = CGFloat((countCells + 1)) * offset / CGFloat(countCells)
+        return CGSize(width: widthCell - spacing, height: heightCell - (offset*2))
     }
     
 }

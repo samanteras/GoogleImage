@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 var results: [Result] = []
-//var indexMain: Int = 0
 var indexForImage = IndexImage()
 
 struct APIResponse: Decodable{
@@ -30,8 +29,6 @@ func request(query: String, complitionHandler: (()->Void)?){
     guard let url = URL(string: urlString) else {
         return
     }
- //   guard let self = self else { return }
-
     let task = URLSession.shared.dataTask(with: url) { data, _, error in
             
         guard let data = data, error == nil  else {
@@ -44,12 +41,33 @@ func request(query: String, complitionHandler: (()->Void)?){
                 results = jsonResult.images_results
                 complitionHandler?()
             }
-            print(jsonResult.images_results.count)
         }
         catch {
-            print(error)
+                print(error)
         }
     }
     task.resume()
 }
 
+func getImage(url: String, imageView: UIImageView){
+    if let url = URL(string: url) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = try? Data(contentsOf: url) {
+                let image = UIImage(data: data)
+                if image!.size.height > 100 && image!.size.width > 100 {
+                    DispatchQueue.main.async {
+                        imageView.kf.setImage(with: url)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        imageView.image = UIImage(named: "content")
+                    }
+                }
+            }
+        }.resume()
+    } else {
+        DispatchQueue.main.async {
+            imageView.image = UIImage(named: "content")
+        }
+    }
+}
